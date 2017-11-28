@@ -15,10 +15,14 @@
 <meta property="og:url" content="http://cliugeek9229.github.io/2017/11/28/冒泡排序、快速排序（递归-非递归）、堆排序算法比较浅析/index.html">
 <meta property="og:site_name" content="Leno&#39;s Blog">
 <meta property="og:description" content="最近算法老师让大家抓紧时间完成算法作业，总共四个题目。这几个题目都很不错，我计划着把这四个作业写成四篇博客，一是可以记录下来供大家分享学习，二是可以提升自己对于这几个算法的理解。">
-<meta property="og:updated_time" content="2017-11-28T08:25:58.664Z">
+<meta property="og:image" content="http://cliugeek9229.github.io/img/kcnrmn.png">
+<meta property="og:image" content="http://cliugeek9229.github.io/img/Heap.png">
+<meta property="og:image" content="http://cliugeek9229.github.io/img/HeapInform.png">
+<meta property="og:updated_time" content="2017-11-28T10:56:49.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="冒泡排序、快速排序（递归&amp;非递归）、堆排序算法比较浅析">
 <meta name="twitter:description" content="最近算法老师让大家抓紧时间完成算法作业，总共四个题目。这几个题目都很不错，我计划着把这四个作业写成四篇博客，一是可以记录下来供大家分享学习，二是可以提升自己对于这几个算法的理解。">
+<meta name="twitter:image" content="http://cliugeek9229.github.io/img/kcnrmn.png">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -208,210 +212,16 @@
 <p>程序代码：</p>
 </blockquote>
 <p>（1）    冒泡排序：</p>
-<pre><code>public class BubbleSort {
-   public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    int A[] = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-    BubbleSort(A, 10);
-    for (int i = 0; i &lt; 10; i++) {
-        System.out.print(A[i] + &quot; &quot;);
-    }
-}
-
-   public static void BubbleSort(int A[], int n) {
-    boolean flag = false;
-    int temp;
-    for (int i = 0; i &lt; n - 1; i++) {
-        flag = false;
-        for (int j = n - 1; j &gt; i; j--)
-            if (A[j - 1] &gt; A[j]) {
-                temp = A[j - 1];
-                A[j - 1] = A[j];
-                A[j] = temp;
-                flag = true;
-            }
-        if (flag == false)
-            return;
-    }
-}
-}
+<pre><code><figure class="highlight plain"><figcaption><span>class BubbleSort &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">   public static void main(String[] args) &#123;</div><div class="line">	// TODO Auto-generated method stub</div><div class="line">	int A[] = &#123; 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 &#125;;</div><div class="line">	BubbleSort(A, 10);</div><div class="line">	for (int i = 0; i &lt; 10; i++) &#123;</div><div class="line">		System.out.print(A[i] + &quot; &quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">      public static void BubbleSort(int A[], int n) &#123;</div><div class="line">	boolean flag = false;</div><div class="line">	int temp;</div><div class="line">	for (int i = 0; i &lt; n - 1; i++) &#123;</div><div class="line">		flag = false;</div><div class="line">		for (int j = n - 1; j &gt; i; j--)</div><div class="line">			if (A[j - 1] &gt; A[j]) &#123;</div><div class="line">				temp = A[j - 1];</div><div class="line">				A[j - 1] = A[j];</div><div class="line">				A[j] = temp;</div><div class="line">				flag = true;</div><div class="line">			&#125;</div><div class="line">		if (flag == false)</div><div class="line">			return;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><p>（2）    快速排序：</p>
-<pre><code>public class QuickSort {
-    public static void main(String[] args) {
-        int A[] = { 1, 5, 8, 2, 4, 6, 3, 7, 9, 0 };
-        int low = 0;
-        int high = A.length - 1;
-        QuickSort(A, low, high);
-        for (int i = 0; i &lt; A.length; i++) {
-            System.out.print(A[i] + &quot; &quot;);
-    }
-}
-
-public static void QuickSort(int A[], int low, int high) {
-    if (low &lt; high) {
-        int pivotpos = Partition(A, low, high);
-        QuickSort(A, low, pivotpos - 1);
-        QuickSort(A, pivotpos + 1, high);
-    }
-}
-
-public static int Partition(int A[], int low, int high) {
-    int pivot = A[low];
-    while (low &lt; high) {
-        while (low &lt; high &amp;&amp; A[high] &gt;= pivot)
-            --high;
-        A[low] = A[high];
-        while (low &lt; high &amp;&amp; A[low] &lt;= pivot)
-            ++low;
-        A[high] = A[low];
-    }
-    A[low] = pivot;
-    return low;
-}
-}
+<pre><code><figure class="highlight plain"><figcaption><span>class QuickSort &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		int A[] = &#123; 1, 5, 8, 2, 4, 6, 3, 7, 9, 0 &#125;;</div><div class="line">		int low = 0;</div><div class="line">		int high = A.length - 1;</div><div class="line">		QuickSort(A, low, high);</div><div class="line">		for (int i = 0; i &lt; A.length; i++) &#123;</div><div class="line">			System.out.print(A[i] + &quot; &quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static void QuickSort(int A[], int low, int high) &#123;</div><div class="line">	if (low &lt; high) &#123;</div><div class="line">		int pivotpos = Partition(A, low, high);</div><div class="line">		QuickSort(A, low, pivotpos - 1);</div><div class="line">		QuickSort(A, pivotpos + 1, high);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static int Partition(int A[], int low, int high) &#123;</div><div class="line">	int pivot = A[low];</div><div class="line">	while (low &lt; high) &#123;</div><div class="line">		while (low &lt; high &amp;&amp; A[high] &gt;= pivot)</div><div class="line">			--high;</div><div class="line">		A[low] = A[high];</div><div class="line">		while (low &lt; high &amp;&amp; A[low] &lt;= pivot)</div><div class="line">			++low;</div><div class="line">		A[high] = A[low];</div><div class="line">	&#125;</div><div class="line">	A[low] = pivot;</div><div class="line">	return low;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><p>（3）    快速排序非递归方式实现：</p>
-<pre><code>public class QuickSortNonRecursion {
-    public static void main(String[] args) {
-        int A[] = { 1, 5, 8, 2, 4, 6, 3, 7, 9, 0 };
-        int low = 0;
-        int high = A.length - 1;
-        nonRec_quickSort(A, low, high);
-        for (int i = 0; i &lt; A.length; i++) {
-            System.out.print(A[i] + &quot; &quot;);
-    }
-}
-
-public static void nonRec_quickSort(int[] a, int start, int end) {
-    Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
-    if (start &lt; end) {
-        stack.push(end);
-        stack.push(start);
-        while (!stack.isEmpty()) {
-            int l = stack.pop();
-            int r = stack.pop();
-            int index = partition(a, l, r);
-            if (l &lt; index - 1) {
-                stack.push(index - 1);
-                stack.push(l);
-            }
-            if (r &gt; index + 1) {
-                stack.push(r);
-                stack.push(index + 1);
-            }
-        }
-    }
-    System.out.println(Arrays.toString(a));
-}
-
-public static int partition(int[] a, int start, int end) {
-    int pivot = a[start];
-    while (start &lt; end) {
-        while (start &lt; end &amp;&amp; a[end] &gt;= pivot)
-            end--;
-        a[start] = a[end];
-        while (start &lt; end &amp;&amp; a[start] &lt;= pivot)
-            start++;
-        a[end] = a[start];
-    }
-    a[start] = pivot;
-    return start;
-}
-}
+<pre><code><figure class="highlight plain"><figcaption><span>class QuickSortNonRecursion &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		int A[] = &#123; 1, 5, 8, 2, 4, 6, 3, 7, 9, 0 &#125;;</div><div class="line">		int low = 0;</div><div class="line">		int high = A.length - 1;</div><div class="line">		nonRec_quickSort(A, low, high);</div><div class="line">		for (int i = 0; i &lt; A.length; i++) &#123;</div><div class="line">			System.out.print(A[i] + &quot; &quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static void nonRec_quickSort(int[] a, int start, int end) &#123;</div><div class="line">	Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();</div><div class="line">	if (start &lt; end) &#123;</div><div class="line">		stack.push(end);</div><div class="line">		stack.push(start);</div><div class="line">		while (!stack.isEmpty()) &#123;</div><div class="line">			int l = stack.pop();</div><div class="line">			int r = stack.pop();</div><div class="line">			int index = partition(a, l, r);</div><div class="line">			if (l &lt; index - 1) &#123;</div><div class="line">				stack.push(index - 1);</div><div class="line">				stack.push(l);</div><div class="line">			&#125;</div><div class="line">			if (r &gt; index + 1) &#123;</div><div class="line">				stack.push(r);</div><div class="line">				stack.push(index + 1);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	System.out.println(Arrays.toString(a));</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static int partition(int[] a, int start, int end) &#123;</div><div class="line">	int pivot = a[start];</div><div class="line">	while (start &lt; end) &#123;</div><div class="line">		while (start &lt; end &amp;&amp; a[end] &gt;= pivot)</div><div class="line">			end--;</div><div class="line">		a[start] = a[end];</div><div class="line">		while (start &lt; end &amp;&amp; a[start] &lt;= pivot)</div><div class="line">			start++;</div><div class="line">		a[end] = a[start];</div><div class="line">	&#125;</div><div class="line">	a[start] = pivot;</div><div class="line">	return start;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><p>（4）    堆排序：</p>
 <p>核心代码：</p>
-<pre><code>public class HeapSort {
-    public static void main(String[] args) {
-        int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,     -1, -2, -3 };
-        System.out.println(&quot;Before heap:&quot;);
-        ArrayUtils.printArray(array);
-        heapSort(array);
-        System.out.println(&quot;After heap sort:&quot;);
-        ArrayUtils.printArray(array);
-    }
-
-public static void heapSort(int[] array) {
-    if (array == null || array.length &lt;= 1)
-        return;
-    buildMaxHeap(array);
-    for (int i = array.length - 1; i &gt;= 1; i--) {
-        ArrayUtils.exchangeElements(array, 0, i);
-        maxHeap(array, i, 0);
-    }
-}
-
-private static void buildMaxHeap(int[] array) {
-    if (array == null || array.length &lt;= 1) {
-        return;
-    }
-    int half = array.length / 2;
-    for (int i = half; i &gt;= 0; i--) {
-        maxHeap(array, array.length, i);
-    }
-}
-
-private static void maxHeap(int[] array, int heapSize, int index) {
-    int left = index * 2 + 1;
-    int right = index * 2 + 2;
-    int largest = index;
-    if (left &lt; heapSize &amp;&amp; array[left] &gt; array[index]) {
-        largest = left;
-    }
-    if (right &lt; heapSize &amp;&amp; array[right] &gt; array[largest]) {
-        largest = right;
-    }
-    if (index != largest) {
-        ArrayUtils.exchangeElements(array, index, largest);
-        maxHeap(array, heapSize, largest);
-    }
-}
-}
+<pre><code><figure class="highlight plain"><figcaption><span>class HeapSort &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   public static void main(String[] args) &#123;</div><div class="line">       int[] array = &#123; 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3 &#125;;</div><div class="line"></div><div class="line">       System.out.println(&quot;Before heap:&quot;);</div><div class="line">       ArrayUtils.printArray(array);</div><div class="line"></div><div class="line">       heapSort(array);</div><div class="line"></div><div class="line">       System.out.println(&quot;After heap sort:&quot;);</div><div class="line">       ArrayUtils.printArray(array);</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   public static void heapSort(int[] array) &#123;</div><div class="line">       if (array == null || array.length &lt;= 1)</div><div class="line">           return;</div><div class="line"></div><div class="line">       buildMaxHeap(array);</div><div class="line">       for (int i = array.length - 1; i &gt;= 1; i--) &#123;</div><div class="line">           ArrayUtils.exchangeElements(array, 0, i);</div><div class="line"></div><div class="line">           maxHeap(array, i, 0);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   private static void buildMaxHeap(int[] array) &#123;</div><div class="line">       if (array == null || array.length &lt;= 1) &#123;</div><div class="line">           return;</div><div class="line">       &#125;</div><div class="line">       int half = array.length / 2;</div><div class="line">       for (int i = half; i &gt;= 0; i--) &#123;</div><div class="line">           maxHeap(array, array.length, i);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   private static void maxHeap(int[] array, int heapSize, int index) &#123;</div><div class="line">       int left = index * 2 + 1;</div><div class="line">       int right = index * 2 + 2;</div><div class="line"></div><div class="line">       int largest = index;</div><div class="line">       if (left &lt; heapSize &amp;&amp; array[left] &gt; array[index]) &#123;</div><div class="line">           largest = left;</div><div class="line">       &#125;</div><div class="line">       if (right &lt; heapSize &amp;&amp; array[right] &gt; array[largest]) &#123;</div><div class="line">           largest = right;</div><div class="line">       &#125;</div><div class="line">       if (index != largest) &#123;</div><div class="line">           ArrayUtils.exchangeElements(array, index, largest);</div><div class="line">           maxHeap(array, heapSize, largest);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><p>工具类：</p>
-<pre><code>public class HeapSort {
-    public static void main(String[] args) {
-        int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,     -1, -2, -3 };
-        System.out.println(&quot;Before heap:&quot;);
-        ArrayUtils.printArray(array);
-        heapSort(array);
-        System.out.println(&quot;After heap sort:&quot;);
-        ArrayUtils.printArray(array);
-    }
-
-public static void heapSort(int[] array) {
-    if (array == null || array.length &lt;= 1)
-        return;
-    buildMaxHeap(array);
-    for (int i = array.length - 1; i &gt;= 1; i--) {
-        ArrayUtils.exchangeElements(array, 0, i);
-        maxHeap(array, i, 0);
-    }
-}
-
-private static void buildMaxHeap(int[] array) {
-    if (array == null || array.length &lt;= 1) {
-        return;
-    }
-    int half = array.length / 2;
-    for (int i = half; i &gt;= 0; i--) {
-        maxHeap(array, array.length, i);
-    }
-}
-
-private static void maxHeap(int[] array, int heapSize, int index) {
-    int left = index * 2 + 1;
-    int right = index * 2 + 2;
-    int largest = index;
-    if (left &lt; heapSize &amp;&amp; array[left] &gt; array[index]) {
-        largest = left;
-    }
-    if (right &lt; heapSize &amp;&amp; array[right] &gt; array[largest]) {
-        largest = right;
-    }
-    if (index != largest) {
-        ArrayUtils.exchangeElements(array, index, largest);
-        maxHeap(array, heapSize, largest);
-    }
-}
-}
+<pre><code><figure class="highlight plain"><figcaption><span>class ArrayUtils &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">   public static void printArray(int[] array) &#123;</div><div class="line">       System.out.print(&quot;&#123;&quot;);</div><div class="line">       for (int i = 0; i &lt; array.length; i++) &#123;</div><div class="line">           System.out.print(array[i]);</div><div class="line">           if (i &lt; array.length - 1) &#123;</div><div class="line">               System.out.print(&quot;,&quot;);</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       System.out.println(&quot;&#125;&quot;);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   public static void exchangeElements(int[] array, int index1, int index2) &#123;</div><div class="line">       int temp = array[index1];</div><div class="line">       array[index1] = array[index2];</div><div class="line">       array[index2] = temp;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p>测试例及运行结果：</p>
 </blockquote>
@@ -420,11 +230,18 @@ private static void maxHeap(int[] array, int heapSize, int index) {
 <p>分析：</p>
 </blockquote>
 <p>（1）    冒泡排序：<br>最好情况：对象的初始排列是按关键码从小到大排好序时，此算法只执行一次冒泡排序，做n-1次的关键码比较，不需要移动对象。<br>最坏情况：算法执行了n-1次冒泡，第i次（1&lt;=i&lt;=n）做了n-i次关键码比较，执行了n-i次对象交换。因此这种情况下，总的关键码比较次数KCN和对象移动次数RMN为：</p>
+<p><img src="/img/kcnrmn.png" alt="KCN和RMN"></p>
 <p>空间复杂度：需要一个附加对象以实现对象值的对换。<br>冒泡排序是一个稳定的排序算法。<br>（2）    快速排序（递归）：<br>快速排序的趟数取决于递归树的深度。</p>
 <p>最理想情况下时间复杂度分析：每次划分后，该对象的左右两侧的子序列长度相同。总的时间复杂度T(n)= o(n log2n )<br>最坏情况下时间复杂度分析：每次划分后，有一个子序列是空的，此时T(n)=O(n2)<br>平均情况：T(n)= o(n log2n )</p>
 <p>最好情况下空间复杂度分析：由于算法是递归的，需要一个栈存放每层递归调用时的指针和参数。递归的深度就是树的深度，因此此时的存储开销为o(log2n)。<br>最坏情况下空间复杂度分析：此时递归树为单支树，存储开销为o(n)。</p>
 <p>快速排序是不稳定的排序算法。<br>（3）    快速排序（非递归）：<br>该算法对比递归算法，它使用的栈是我们自己创建的栈。而递归方法使用的是程序自动产生的栈，栈中包含了函数调用时的参数和函数中的局部变量。如果局部变量很多或者函数内部有调用了其他函数，这样一来，栈就会变得很大，每次递归调用都要操作很大的栈，效率自然会下降。而我们自己创建的栈，不管程序的复杂度如何，都不会影响程序的效率。<br>该算法的平均情况的时间复杂度仍是o(n log2n )。<br>（4）    堆排序：<br>时间复杂度分析：初始化大顶堆过程每个非叶节点都用到了调整过程的算法，因此该层循环所用时间为：</p>
+<blockquote>
+<p><img src="/img/Heap.png" alt="Heap">                 </p>
+</blockquote>
 <p>n    其中，i 是层序号，2i 是第 i 层的最大结点数，(k-i-1)是第 i 层结点能够       移动的最大距离。<br>化简后：</p>
+<blockquote>
+<p><img src="/img/HeapInform.png" alt="HeapInform"></p>
+</blockquote>
 <p>调整循环过程：该循环的计算时间为O(nlog2n)。所以，堆排序的时间复杂度为O(nlog2n)。<br>空间复杂度分析：附加存储主要在调整过程中占用，执行交换需要使用一个临时存储空间，因此空间复杂度为O(1)。<br>堆排序是一个不稳定的排序算法。</p>
 <blockquote>
 <p>以上是作业的主要内容，如果有不正确或者有异议的地方，还希望大家不吝指正。</p>
