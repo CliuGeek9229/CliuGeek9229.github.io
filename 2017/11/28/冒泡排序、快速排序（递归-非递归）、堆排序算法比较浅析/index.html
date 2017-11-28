@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://cliugeek9229.github.io/2017/11/28/冒泡排序、快速排序（递归-非递归）、堆排序算法比较浅析/index.html">
 <meta property="og:site_name" content="Leno&#39;s Blog">
 <meta property="og:description" content="最近算法老师让大家抓紧时间完成算法作业，总共四个题目。这几个题目都很不错，我计划着把这四个作业写成四篇博客，一是可以记录下来供大家分享学习，二是可以提升自己对于这几个算法的理解。">
-<meta property="og:updated_time" content="2017-11-28T08:21:22.000Z">
+<meta property="og:updated_time" content="2017-11-28T08:25:58.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="冒泡排序、快速排序（递归&amp;非递归）、堆排序算法比较浅析">
 <meta name="twitter:description" content="最近算法老师让大家抓紧时间完成算法作业，总共四个题目。这几个题目都很不错，我计划着把这四个作业写成四篇博客，一是可以记录下来供大家分享学习，二是可以提升自己对于这几个算法的理解。">
@@ -208,8 +208,17 @@
 <p>程序代码：</p>
 </blockquote>
 <p>（1）    冒泡排序：</p>
-<p>public class BubbleSort {<br>       public static void main(String[] args) {<br>        // TODO Auto-generated method stub<br>        int A[] = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };<br>        BubbleSort(A, 10);<br>        for (int i = 0; i &lt; 10; i++) {<br>            System.out.print(A[i] + “ “);<br>        }<br>    }</p>
-<pre><code>   public static void BubbleSort(int A[], int n) {
+<pre><code>public class BubbleSort {
+   public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    int A[] = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+    BubbleSort(A, 10);
+    for (int i = 0; i &lt; 10; i++) {
+        System.out.print(A[i] + &quot; &quot;);
+    }
+}
+
+   public static void BubbleSort(int A[], int n) {
     boolean flag = false;
     int temp;
     for (int i = 0; i &lt; n - 1; i++) {
@@ -225,10 +234,20 @@
             return;
     }
 }
-</code></pre><p>}</p>
-<p>（2）    快速排序：</p>
-<p>public class QuickSort {<br>    public static void main(String[] args) {<br>        int A[] = { 1, 5, 8, 2, 4, 6, 3, 7, 9, 0 };<br>        int low = 0;<br>        int high = A.length - 1;<br>        QuickSort(A, low, high);<br>        for (int i = 0; i &lt; A.length; i++) {<br>            System.out.print(A[i] + “ “);<br>        }<br>    }</p>
-<pre><code>public static void QuickSort(int A[], int low, int high) {
+}
+</code></pre><p>（2）    快速排序：</p>
+<pre><code>public class QuickSort {
+    public static void main(String[] args) {
+        int A[] = { 1, 5, 8, 2, 4, 6, 3, 7, 9, 0 };
+        int low = 0;
+        int high = A.length - 1;
+        QuickSort(A, low, high);
+        for (int i = 0; i &lt; A.length; i++) {
+            System.out.print(A[i] + &quot; &quot;);
+    }
+}
+
+public static void QuickSort(int A[], int low, int high) {
     if (low &lt; high) {
         int pivotpos = Partition(A, low, high);
         QuickSort(A, low, pivotpos - 1);
@@ -249,10 +268,20 @@ public static int Partition(int A[], int low, int high) {
     A[low] = pivot;
     return low;
 }
-</code></pre><p>}</p>
-<p>（3）    快速排序非递归方式实现：</p>
-<p>public class QuickSortNonRecursion {<br>    public static void main(String[] args) {<br>        int A[] = { 1, 5, 8, 2, 4, 6, 3, 7, 9, 0 };<br>        int low = 0;<br>        int high = A.length - 1;<br>        nonRec_quickSort(A, low, high);<br>        for (int i = 0; i &lt; A.length; i++) {<br>            System.out.print(A[i] + “ “);<br>        }<br>    }</p>
-<pre><code>public static void nonRec_quickSort(int[] a, int start, int end) {
+}
+</code></pre><p>（3）    快速排序非递归方式实现：</p>
+<pre><code>public class QuickSortNonRecursion {
+    public static void main(String[] args) {
+        int A[] = { 1, 5, 8, 2, 4, 6, 3, 7, 9, 0 };
+        int low = 0;
+        int high = A.length - 1;
+        nonRec_quickSort(A, low, high);
+        for (int i = 0; i &lt; A.length; i++) {
+            System.out.print(A[i] + &quot; &quot;);
+    }
+}
+
+public static void nonRec_quickSort(int[] a, int start, int end) {
     Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
     if (start &lt; end) {
         stack.push(end);
@@ -287,11 +316,20 @@ public static int partition(int[] a, int start, int end) {
     a[start] = pivot;
     return start;
 }
-</code></pre><p>}</p>
-<p>（4）    堆排序：</p>
+}
+</code></pre><p>（4）    堆排序：</p>
 <p>核心代码：</p>
-<p>public class HeapSort {<br>    public static void main(String[] args) {<br>        int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3 };<br>        System.out.println(“Before heap:”);<br>        ArrayUtils.printArray(array);<br>        heapSort(array);<br>        System.out.println(“After heap sort:”);<br>        ArrayUtils.printArray(array);<br>    }</p>
-<pre><code>public static void heapSort(int[] array) {
+<pre><code>public class HeapSort {
+    public static void main(String[] args) {
+        int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,     -1, -2, -3 };
+        System.out.println(&quot;Before heap:&quot;);
+        ArrayUtils.printArray(array);
+        heapSort(array);
+        System.out.println(&quot;After heap sort:&quot;);
+        ArrayUtils.printArray(array);
+    }
+
+public static void heapSort(int[] array) {
     if (array == null || array.length &lt;= 1)
         return;
     buildMaxHeap(array);
@@ -325,10 +363,20 @@ private static void maxHeap(int[] array, int heapSize, int index) {
         ArrayUtils.exchangeElements(array, index, largest);
         maxHeap(array, heapSize, largest);
     }
-</code></pre><p>}<br>}</p>
-<p>工具类：</p>
-<p>public class HeapSort {<br>    public static void main(String[] args) {<br>        int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3 };<br>        System.out.println(“Before heap:”);<br>        ArrayUtils.printArray(array);<br>        heapSort(array);<br>        System.out.println(“After heap sort:”);<br>        ArrayUtils.printArray(array);<br>    }</p>
-<pre><code>public static void heapSort(int[] array) {
+}
+}
+</code></pre><p>工具类：</p>
+<pre><code>public class HeapSort {
+    public static void main(String[] args) {
+        int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,     -1, -2, -3 };
+        System.out.println(&quot;Before heap:&quot;);
+        ArrayUtils.printArray(array);
+        heapSort(array);
+        System.out.println(&quot;After heap sort:&quot;);
+        ArrayUtils.printArray(array);
+    }
+
+public static void heapSort(int[] array) {
     if (array == null || array.length &lt;= 1)
         return;
     buildMaxHeap(array);
@@ -362,8 +410,9 @@ private static void maxHeap(int[] array, int heapSize, int index) {
         ArrayUtils.exchangeElements(array, index, largest);
         maxHeap(array, heapSize, largest);
     }
-</code></pre><p>}<br>}</p>
-<blockquote>
+}
+}
+</code></pre><blockquote>
 <p>测试例及运行结果：</p>
 </blockquote>
 <p>（1）    冒泡排序：<br>{10,9,8,7,6,5,4,3,2,1}  ==&gt;  {1,2,3,4,5,6,7,8,9,10}<br>{1,5,8,2,4,6,3,7,9,0}  ==&gt;  {0,1,2,3,4,5,6,7,8,9}<br>（2）    快速排序（递归与非递归测试例相同）：<br>{10,9,8,7,6,5,4,3,2,1}  ==&gt;  {1,2,3,4,5,6,7,8,9,10}<br>{1,5,8,2,4,6,3,7,9,0}  ==&gt;  {0,1,2,3,4,5,6,7,8,9}<br>（3）    堆排序：<br>           Before heap:<br>           {9,8,7,6,5,4,3,2,1,0,-1,-2,-3}<br>           After heap sort:<br>{-3,-2,-1,0,1,2,3,4,5,6,7,8,9}</p>
