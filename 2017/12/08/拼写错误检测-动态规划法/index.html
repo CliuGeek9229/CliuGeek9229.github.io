@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://cliugeek9229.github.io">
-  <title>Archives: 2017 | Leno&#39;s Blog</title>
+  <title>拼写错误检测(动态规划法) | Leno&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leno&#39;s Blog">
-<meta property="og:url" content="http://cliugeek9229.github.io/archives/2017/index.html">
+  <meta name="description" content="最近忙于完成分布式数据库大项目的代码，算法作业也因此被搁置了好几天。分布式代码终于敲完交上去了，现在有时间继续完成算法作业了。其实算法作业并不是很难，大家仔细分析下问题，多搜搜博客，学习下前辈们如何解决这类问题，问题其实很容易解决的！只有站在前人的肩膀上，我们才能取得更大的进步，同时塑造更好的自己（不管了，我就是想写小学生作文~~~）！我还是本着原来的想法，我把我的思路和设计的关键部分贴出来，大">
+<meta name="keywords" content="学习心得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拼写错误检测(动态规划法)">
+<meta property="og:url" content="http://cliugeek9229.github.io/2017/12/08/拼写错误检测-动态规划法/index.html">
 <meta property="og:site_name" content="Leno&#39;s Blog">
+<meta property="og:description" content="最近忙于完成分布式数据库大项目的代码，算法作业也因此被搁置了好几天。分布式代码终于敲完交上去了，现在有时间继续完成算法作业了。其实算法作业并不是很难，大家仔细分析下问题，多搜搜博客，学习下前辈们如何解决这类问题，问题其实很容易解决的！只有站在前人的肩膀上，我们才能取得更大的进步，同时塑造更好的自己（不管了，我就是想写小学生作文~~~）！我还是本着原来的想法，我把我的思路和设计的关键部分贴出来，大">
+<meta property="og:image" content="http://cliugeek9229.github.io/img/result1.png">
+<meta property="og:image" content="http://cliugeek9229.github.io/img/result2.png">
+<meta property="og:image" content="http://cliugeek9229.github.io/img/result3.png">
+<meta property="og:updated_time" content="2017-12-08T03:59:31.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leno&#39;s Blog">
+<meta name="twitter:title" content="拼写错误检测(动态规划法)">
+<meta name="twitter:description" content="最近忙于完成分布式数据库大项目的代码，算法作业也因此被搁置了好几天。分布式代码终于敲完交上去了，现在有时间继续完成算法作业了。其实算法作业并不是很难，大家仔细分析下问题，多搜搜博客，学习下前辈们如何解决这类问题，问题其实很容易解决的！只有站在前人的肩膀上，我们才能取得更大的进步，同时塑造更好的自己（不管了，我就是想写小学生作文~~~）！我还是本着原来的想法，我把我的思路和设计的关键部分贴出来，大">
+<meta name="twitter:image" content="http://cliugeek9229.github.io/img/result1.png">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -163,36 +172,130 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-拼写错误检测-动态规划法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      拼写错误检测(动态规划法)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/08/拼写错误检测-动态规划法/" class="archive-article-date">
+
+        
+        <a href="/2017/12/08/拼写错误检测-动态规划法/" class="archive-article-date">
   	<time datetime="2017-12-08T02:41:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/08/拼写错误检测-动态规划法/">拼写错误检测(动态规划法)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>最近忙于完成分布式数据库大项目的代码，算法作业也因此被搁置了好几天。分布式代码终于敲完交上去了，现在有时间继续完成算法作业了。其实算法作业并不是很难，大家仔细分析下问题，多搜搜博客，学习下前辈们如何解决这类问题，问题其实很容易解决的！只有站在前人的肩膀上，我们才能取得更大的进步，同时塑造更好的自己（不管了，我就是想写小学生作文~~~）！我还是本着原来的想法，我把我的思路和设计的关键部分贴出来，大家分享学习，全部的代码我不会放出来，原因很简单，我不是很想让大家都交雷同作业，也希望大家能理解。下面开始我们的第三个算法的设计与实现吧。<br><a id="more"></a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>任务要求：以第2题中的哈希表英语词典为基础，应用动态规划法设计和实现拼写错误检测程序。 对输入单词进行检测，如果不正确，给出最接近的3个可选词。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>算法思想：</p>
+</blockquote>
+<p>首先我们要讲一个名词：编辑距离（EditDistance）【又称Levenshtein距离】：对于两个字符串，由一个转换为另一个所需的最少编辑操作次数。其中许可的编辑操作包括将一个字符替换成为另一个字符，插入一个字符，删除一个字符。</p>
+<p>想了一个简单直观的例子，帮助大家理解以上两句话：</p>
+<p>输入待查对象：kittain，我们字典中的一个对象sitting，我们求他俩的最短编辑距离的时候的步骤为：</p>
+<pre><code>sittain(k-&gt;s替换);
 
-        <div class="article-info info-on-right">
-          
+sittin(删掉a);
+
+sitting(插入g)。
+</code></pre><p>但是电脑毕竟不是人脑，它没有思想，它一眼看不出来我们上述的操作，但是它擅长搜索啊，计算啊。所以我们一个字母一个字母的开始做比较。</p>
+<p>首先想我们算最终的编辑距离是不是得依赖前面算得的编辑距离，我们是不是得层层递归，才能算出从字符串a到字符串b的编辑距离，所以我们使用了分治的思想，将一个复杂的问题分解为类似的子问题。</p>
+<p>所以我们先按照递归的思想：</p>
+<pre><code>字符串a，共m位，从a[1]到a[m]
+
+
+字符串b，共n位，从b[1]到b[n]
+
+
+d[i][j]表示字符串a到b的编辑距离。
+</code></pre><p>按照递归的思想做解决这个问题（a[i]和b[j]为a,b的最后一位）：</p>
+<pre><code>&lt;1&gt;当a[i]=b[j],d[i][j] = d[i-1][j-1]
+
+
+&lt;2&gt;当d[i]!=b[j],d[i][j]等于如下三项的最小值：
+
+
+    ·d[i-1][j]+1(删除a[i])
+
+
+    ·d[i][j-1]+1(插入b[j])
+
+
+    ·d[i-1][j-1]+1(将a[i]替换成b[j])
+</code></pre><p>递归的边界：</p>
+<pre><code>·a[i][0] = i,b字符串为空，表示将a[1]到a[i]全部删除，所以编辑距离为i；
+
+
+·a[0][i] = j,a字符串为空，表示将b[1]到b[j]全部插入，所以编辑距离为j。
+</code></pre><p>优化：（动态规划解决冗余）<br>以上的设计思路中存在着严重的问题，由于采用了递归，导致代码的效率很低下，时间复杂度呈指数增长，也存在这大量的重复字问题的计算，解决这种冗余的办法就是用动态规划。</p>
+<p>递归的解决思路是从后往前算的，也就是我们想的到d[i][j],就必须先得到    d[i][j-1]、d[i-1][j]、d[i-1][j-1]三者中的最小。</p>
+<p>而动态规划的思想恰恰相反，它的思想就是从前往后算，先算出各个子问题，然后根据子问题，计算得出原问题，因此可以解决大量出现的冗余问题。</p>
+<blockquote>
+<p>设计思路：</p>
+</blockquote>
+<p>首先，在第二题的代码中，我给出了一个find()函数，这个函数的作用是根据我所输入的待查找字符串，计算出hashCode，然后去我的哈希表里面查找这个字符串，如果存在的话，可以直接返回该字符串对应的对象。因为hash表查找比我的编辑距离（Edit Distance）计算相似距离的方法快（编辑距离是循环hash表，表中每个单词都做比对），所以我们首先使用hash表的find方法查找输入的单词是不是正确的单词，如果不是，我们再使用动态规划优化后的编辑距离计算相似距离的方法找出三个最为相似的单词输出。</p>
+<blockquote>
+<p>程序代码：</p>
+</blockquote>
+<p>动态规划求编辑距离的核心代码：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tst;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line"> 	*</div><div class="line"> 	*<span class="doctag">@ClassName</span> EditDistance.java </div><div class="line"> 	*<span class="doctag">@author</span> Leno E-mail:cliugeek@us-forever.com</div><div class="line"> 	*<span class="doctag">@date</span> 2017年12月7日下午1:28:27</div><div class="line"> 	*<span class="doctag">@Description</span> 动态规划思想求编辑距离，从前往后算</div><div class="line"> 	*/</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditDistance</span> &#123;</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> min(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)&#123;</div><div class="line">        <span class="keyword">int</span> tmp = a&lt;b?a:b;</div><div class="line">        <span class="keyword">return</span> tmp&lt;c?tmp:c;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> edit_distance(String a,String b)&#123;</div><div class="line">        <span class="keyword">int</span> lena = a.length();</div><div class="line">        <span class="keyword">int</span> lenb = b.length();</div><div class="line">        <span class="keyword">int</span> d[][] = <span class="keyword">new</span> <span class="keyword">int</span>[lena+<span class="number">1</span>][lenb+<span class="number">1</span>];</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span> , j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=lena;i++)&#123;</div><div class="line">            d[i][<span class="number">0</span>] = i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=lenb;j++)&#123;</div><div class="line">            d[<span class="number">0</span>][j] = j;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=lena;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=lenb;j++)&#123;</div><div class="line">                <span class="keyword">if</span>(a.charAt(i<span class="number">-1</span>) == b.charAt(j<span class="number">-1</span>))&#123;</div><div class="line">                    d[i][j] = d[i<span class="number">-1</span>][j<span class="number">-1</span>];</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    d[i][j] = min(d[i<span class="number">-1</span>][j]+<span class="number">1</span>,d[i][j<span class="number">-1</span>]+<span class="number">1</span>,d[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> d[lena][lenb]; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>测试例和运行结果：</p>
+</blockquote>
+<p>这次的测试例给的比较多，我随便输入了几个单词进行了相应的测试，结果如下：</p>
+<p><img src="/img/result1.png" alt="result1"></p>
+<p><img src="/img/result2.png" alt="result2"></p>
+<p><img src="/img/result3.png" alt="result3"></p>
+<blockquote>
+<p>以上是本次作业的核心实现部分，如果有不正确的地方，还希望大家不吝指正。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>关爱空巢博主，请往这里投硬币，阿里嘎都~~~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wpay1.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -204,361 +307,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://cliugeek9229.github.io/2017/12/08/拼写错误检测-动态规划法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/04/如何解决javax-el-PropertyNotFoundException-Property-RoomNum-not-found-on-XXX/" class="archive-article-date">
-  	<time datetime="2017-12-04T11:27:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-04</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/04/如何解决javax-el-PropertyNotFoundException-Property-RoomNum-not-found-on-XXX/">如何解决javax.el.PropertyNotFoundException: Property &#39;RoomNum&#39; not found on XXX</a>
-    </h1>
+  
+    <a href="/2017/12/04/如何解决javax-el-PropertyNotFoundException-Property-RoomNum-not-found-on-XXX/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何解决javax.el.PropertyNotFoundException: Property &#39;RoomNum&#39; not found on XXX</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/29/实现OPEN-哈希表模板类/" class="archive-article-date">
-  	<time datetime="2017-11-29T13:59:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/29/实现OPEN-哈希表模板类/">实现OPEN 哈希表模板类</a>
-    </h1>
+  <div id="SOHUCS" sid="拼写错误检测-动态规划法" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "true"; 
+var conf = "true"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/28/冒泡排序、快速排序（递归-非递归）、堆排序算法比较浅析/" class="archive-article-date">
-  	<time datetime="2017-11-28T08:04:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/28/冒泡排序、快速排序（递归-非递归）、堆排序算法比较浅析/">冒泡排序、快速排序（递归&amp;非递归）、堆排序算法比较浅析</a>
-    </h1>
-  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'Leno'; // required: replace example with your forum shortname
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/19/Deep-Learning学习笔记（一）/" class="archive-article-date">
-  	<time datetime="2017-10-19T01:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/19/Deep-Learning学习笔记（一）/">Deep Learning学习笔记（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/31/新的开始/" class="archive-article-date">
-  	<time datetime="2017-08-31T13:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/31/新的开始/">新的开始</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/git-学习总结2/" class="archive-article-date">
-  	<time datetime="2017-06-21T01:09:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/git-学习总结2/">git 学习总结（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/20/git-学习总结/" class="archive-article-date">
-  	<time datetime="2017-06-20T14:27:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/20/git-学习总结/">git 学习总结（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/16/忙点好-忙点好/" class="archive-article-date">
-  	<time datetime="2017-06-16T11:58:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/16/忙点好-忙点好/">忙点好~忙点好~</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/07/博客处女作/" class="archive-article-date">
-  	<time datetime="2017-06-07T13:37:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/博客处女作/">博客处女作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -581,8 +437,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
