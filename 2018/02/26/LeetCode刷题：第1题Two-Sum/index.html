@@ -8,17 +8,19 @@
   <link rel="dns-prefetch" href="http://cliugeek9229.github.io">
   <title>LeetCode刷题：第1题Two Sum | Leno&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="听从老姐的建议，开始在LeetCode上刷题，争取每周能刷3到5道题，每道题我都会以博客的形式将其中的原理以及各种算法都展现出来。">
+  <meta name="description" content="听从老姐的建议，开始在LeetCode上刷题，争取每周能保质保量的完成2到3道题，每道题我都会以博客的形式将其中的原理以及各种算法都展现出来。">
 <meta name="keywords" content="LeetCode刷题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode刷题：第1题Two Sum">
 <meta property="og:url" content="http://cliugeek9229.github.io/2018/02/26/LeetCode刷题：第1题Two-Sum/index.html">
 <meta property="og:site_name" content="Leno&#39;s Blog">
-<meta property="og:description" content="听从老姐的建议，开始在LeetCode上刷题，争取每周能刷3到5道题，每道题我都会以博客的形式将其中的原理以及各种算法都展现出来。">
-<meta property="og:updated_time" content="2018-02-26T14:52:05.568Z">
+<meta property="og:description" content="听从老姐的建议，开始在LeetCode上刷题，争取每周能保质保量的完成2到3道题，每道题我都会以博客的形式将其中的原理以及各种算法都展现出来。">
+<meta property="og:image" content="http://cliugeek9229.github.io/img/twosumruntime.png">
+<meta property="og:updated_time" content="2018-02-28T02:13:07.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题：第1题Two Sum">
-<meta name="twitter:description" content="听从老姐的建议，开始在LeetCode上刷题，争取每周能刷3到5道题，每道题我都会以博客的形式将其中的原理以及各种算法都展现出来。">
+<meta name="twitter:description" content="听从老姐的建议，开始在LeetCode上刷题，争取每周能保质保量的完成2到3道题，每道题我都会以博客的形式将其中的原理以及各种算法都展现出来。">
+<meta name="twitter:image" content="http://cliugeek9229.github.io/img/twosumruntime.png">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -195,7 +197,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>听从老姐的建议，开始在LeetCode上刷题，争取每周能刷3到5道题，每道题我都会以博客的形式将其中的原理以及各种算法都展现出来。<br><a id="more"></a></p>
+<p>听从老姐的建议，开始在LeetCode上刷题，争取每周能保质保量的完成2到3道题，每道题我都会以博客的形式将其中的原理以及各种算法都展现出来。<br><a id="more"></a></p>
 </blockquote>
 <hr>
 <p><strong>题目要求：</strong>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
@@ -205,10 +207,25 @@
 <p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
 </blockquote>
 <hr>
-<p><strong>思路：</strong>题目要求让我们在一个数组中找到两个不重复的数，并且和为target，输出两个数的下标。思路就是两重循环，外层i从第一个数，内层j每次从最后一个数开始，往前面走，遇到i就停止，跳出的条件为i，j两数之和为target。这个思路比较简单，很容易理解，但是相对的时间复杂度就很高，两重循环的时间复杂度为O(n^2)。</p>
+<p><strong>思路1：</strong>题目要求让我们在一个数组中找到两个不重复的数，并且和为target，输出两个数的下标。思路就是两重循环，外层i从第一个数，内层j每次从最后一个数开始，往前面走，遇到i就停止，跳出的条件为i，j两数之和为target。这个思路比较简单，很容易理解，但是相对的时间复杂度就很高，两重循环的时间复杂度为O(n^2)。</p>
 <hr>
 <p><strong>实现代码：</strong></p>
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> <span class="keyword">target</span>) &#123;</div><div class="line">         <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length<span class="number">-1</span>;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=nums.length<span class="number">-1</span>;j&gt;i;j--)&#123;</div><div class="line">                <span class="keyword">if</span>(nums[i]+nums[j] == <span class="keyword">target</span>)&#123;</div><div class="line">                    result[<span class="number">0</span>] = i;</div><div class="line">                    result[<span class="number">1</span>] = j;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p><strong>思路2：</strong>其实这个思路我自己并没有想到，在借鉴题目附带的solution之后，才恍然大悟。思路1中我们讲到最直接的蛮力法就是两重循环，相对的时间复杂度也到达了O(n^2),所以为了减少时间复杂度，我们需要一种更加有效的方法检查数组中是否存在补码，即相对于nums[i],其补码为target-nums[i],假设存在这样的补码，其索引为j,为了满足题目要求，此时的i和j不能为同一个数。如果存在我们只需得到它的索引（下标）即可,而查找这种索引的的映射最佳方法是散列表，这个过程也就是空间换取时间的做法。因为哈希表支持在接近恒定时间内快速查找，所谓“近”的意思就是如果发生碰撞，时间复杂度可能退化到O(n),所以需要仔细选择散列函数就能保证近O(1)查找的时间复杂度。</p>
+<hr>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">         <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">        Map&lt;Integer, Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= nums.length - <span class="number">1</span>; i++)</div><div class="line">            <span class="built_in">map</span>.<span class="built_in">put</span>(nums[i], i); </div><div class="line">        <span class="built_in">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">            <span class="keyword">int</span> complement = target -nums[i];</div><div class="line">            <span class="built_in">if</span>(<span class="built_in">map</span>.containsKey(complement) &amp;&amp; <span class="built_in">map</span>.<span class="built_in">get</span>(complement)!=i)&#123;</div><div class="line">                result[<span class="number">0</span>] = i;</div><div class="line">                result[<span class="number">1</span>] = <span class="built_in">map</span>.<span class="built_in">get</span>(complement);</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>补充：</strong>我们最终为了拿到的是下标，所以在map中key选用的是数组中的值，value选用的是数组中每个值对应的下标。此时我们的算法时间复杂度为O(n)，我们遍历了两次n个元素，虽然散列表将查找的时间复杂度降为了O(1)，但此时的总的时间复杂度为O(n)。</p>
+<hr>
+<p><strong>思路3：</strong>其实算不上思路三，这个思路和思路二是一样的，但是它在思路二的基础上优化了代码，我们原本需要两次循环才能完成的任务其实在一次循环中即可完成。试想，在一次循环中我们直接检测当前的map中是否含有当前元素的补码，如果存在那就说明我们找见了这两个数，只需输出各自的下标即可；否则，我们需要我们就把当前元素放到map中。如此一来一次循环即可完成任务。</p>
+<hr>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">        Map&lt;Integer,Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">            <span class="keyword">int</span> complement = target-nums[i];</div><div class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>.containsKey(complement))&#123;</div><div class="line">                result[<span class="number">0</span>] = <span class="built_in">map</span>.get(complement);</div><div class="line">                result[<span class="number">1</span>] = i;</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">map</span>.put(nums[i], i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p><strong>对比：</strong>下图的runtime由下到上是对应的这三个解决办法，结果不言而喻。</p>
+<p><img src="/img/twosumruntime.png" alt="runtimeImg"></p>
+
       
 
       
@@ -473,15 +490,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode刷题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习心得</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode刷题</a>
               </li>
             
             <div class="clearfix"></div>
