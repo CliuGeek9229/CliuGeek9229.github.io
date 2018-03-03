@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://cliugeek9229.github.io">
-  <title>Archives: 2017/6 | Leno&#39;s Blog</title>
+  <title>LeetCode刷题：第9题PalindromeNumber | Leno&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leno&#39;s Blog">
-<meta property="og:url" content="http://cliugeek9229.github.io/archives/2017/06/index.html">
+  <meta name="description" content="正月十六，这个年算是彻底过完了，也该开始干活了。在LeetCode上做的第二道题，详细内容如下：">
+<meta name="keywords" content="LeetCode刷题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode刷题：第9题PalindromeNumber">
+<meta property="og:url" content="http://cliugeek9229.github.io/2018/03/03/LeetCode刷题：第9题PalindromeNumber/index.html">
 <meta property="og:site_name" content="Leno&#39;s Blog">
+<meta property="og:description" content="正月十六，这个年算是彻底过完了，也该开始干活了。在LeetCode上做的第二道题，详细内容如下：">
+<meta property="og:updated_time" content="2018-03-03T03:01:47.747Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leno&#39;s Blog">
+<meta name="twitter:title" content="LeetCode刷题：第9题PalindromeNumber">
+<meta name="twitter:description" content="正月十六，这个年算是彻底过完了，也该开始干活了。在LeetCode上做的第二道题，详细内容如下：">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -169,174 +174,195 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode刷题：第9题PalindromeNumber" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode刷题：第9题PalindromeNumber
+    </h1>
+  
+
+        
+        <a href="/2018/03/03/LeetCode刷题：第9题PalindromeNumber/" class="archive-article-date">
+  	<time datetime="2018-03-03T02:25:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-03</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>正月十六，这个年算是彻底过完了，也该开始干活了。在LeetCode上做的第二道题，详细内容如下：<br><a id="more"></a></p>
+</blockquote>
+<hr>
+<p><strong>题目要求：</strong>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<hr>
+<p><strong>思路分析：</strong>题目要求很简单，判断一个integer类型的数是否为回文数，但是要求不允许使用额外的空间，所以我们不可能考虑通过将integer转换成string后再进行convert，也就是问题提示中的第二条内容。再看下官方给的提示第一条，负数不可能是回文数，这里讲的就是一个边界问题，所以代码编写的时候肯定先去除这种边界之外的情况。接着看第三条提示，也就是将我们的integer整个reverse，系统提示我们会出现整数溢出问题，所以这种方法我们也不能再考虑了。</p>
+<p>所以综上，我们只能使用数学计算的方法解决本题，而且还不能将我们的目标target整个reverse，所以我们只能考虑将目标target部分reverse，而这个“部分”的量是多少？因为是回文数，所以不难想出这个“部分”的大小就是一半。</p>
+<p>那么问题又来了，这个一半的大小如何判断，什么时候我们找到了target的一半的数字？其实也不是很难，举个例子，对于12321来说，我们肯定要先获得个位，也就是12321%10 == 1，然后在将12321/10 = 1232，再将1232%10 =2，将之前的1*10再加上2，以此类推，所以我们通过我们得到的revert与“原数x”（其实并不是实际意义上的原数，而是每步都除以10之后的数）比较，如果“原数x”比revert小的时候，说明我们就已经处理了一半的数字了。</p>
+<hr>
+<p><strong>代码实现：</strong><br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span> || (x%<span class="number">10</span> == <span class="number">0</span> &amp;&amp; x!=<span class="number">0</span>))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">int</span> revert = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(x&gt;revert)&#123;</div><div class="line">            revert = revert*<span class="number">10</span>+x%<span class="number">10</span>;</div><div class="line">            x = x/<span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(x == revert || x == revert/<span class="number">10</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>关爱空巢博主，请往这里投硬币，阿里嘎都~~~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wpay1.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/git-学习总结2/" class="archive-article-date">
-  	<time datetime="2017-06-21T01:09:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/git-学习总结2/">git 学习总结（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LeetCode刷题</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://cliugeek9229.github.io/2018/03/03/LeetCode刷题：第9题PalindromeNumber/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/20/git-学习总结/" class="archive-article-date">
-  	<time datetime="2017-06-20T14:27:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/20/git-学习总结/">git 学习总结（一）</a>
-    </h1>
+  
+    <a href="/2018/02/26/LeetCode刷题：第1题Two-Sum/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode刷题：第1题Two Sum</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/16/忙点好-忙点好/" class="archive-article-date">
-  	<time datetime="2017-06-16T11:58:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/16/忙点好-忙点好/">忙点好~忙点好~</a>
-    </h1>
+  <div id="SOHUCS" sid="LeetCode刷题：第9题PalindromeNumber" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "true"; 
+var conf = "true"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/07/博客处女作/" class="archive-article-date">
-  	<time datetime="2017-06-07T13:37:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/博客处女作/">博客处女作</a>
-    </h1>
-  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'Leno'; // required: replace example with your forum shortname
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -359,8 +385,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
