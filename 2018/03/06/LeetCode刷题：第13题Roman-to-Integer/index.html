@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://cliugeek9229.github.io">
-  <title>Archives: 2017/8 | Leno&#39;s Blog</title>
+  <title>LeetCode刷题：第13题Roman to Integer | Leno&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leno&#39;s Blog">
-<meta property="og:url" content="http://cliugeek9229.github.io/archives/2017/08/index.html">
+  <meta name="description" content="开始本周的刷题~">
+<meta name="keywords" content="LeetCode刷题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode刷题：第13题Roman to Integer">
+<meta property="og:url" content="http://cliugeek9229.github.io/2018/03/06/LeetCode刷题：第13题Roman-to-Integer/index.html">
 <meta property="og:site_name" content="Leno&#39;s Blog">
+<meta property="og:description" content="开始本周的刷题~">
+<meta property="og:updated_time" content="2018-03-06T13:53:18.130Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leno&#39;s Blog">
+<meta name="twitter:title" content="LeetCode刷题：第13题Roman to Integer">
+<meta name="twitter:description" content="开始本周的刷题~">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -169,60 +174,219 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode刷题：第13题Roman-to-Integer" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/31/新的开始/" class="archive-article-date">
-  	<time datetime="2017-08-31T13:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/31/新的开始/">新的开始</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode刷题：第13题Roman to Integer
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/03/06/LeetCode刷题：第13题Roman-to-Integer/" class="archive-article-date">
+  	<time datetime="2018-03-06T12:28:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>开始本周的刷题~<br><a id="more"></a></p>
+</blockquote>
+<hr>
+<p><strong>题目要求：</strong>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.</p>
+<hr>
+<p><strong>拼写规则：</strong>要想了解如何解决这个问题，我们第一步肯定要了解罗马数字的编码规则，<a href="https://zh.wikipedia.org/wiki/%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97" target="_blank" rel="external">这里</a>有一条关于编码规则的超链，拿去不谢。但是为了读者方便，这里给出一个关于罗马字母与阿拉伯数字对应的表格。</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字母</th>
+<th style="text-align:center">M</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">L</th>
+<th style="text-align:center">X</th>
+<th style="text-align:center">V</th>
+<th style="text-align:center">I</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">代表数字</td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">500</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>设计思路：</strong>其实这个题不是很难，解法也有很多，但是这里我想介绍的是我认为相对有点意思的解法。本着左加右减的设计规则，我们对罗马数字转换为阿拉伯数字的时候也要比较相邻两个数字的大小。</p>
+<p>遍历顺序从前往后，所以对于第一个符号来说，我们直接读取它代表的数字就可以了。如果当前符号代表的数字比它前一个符号代表的数字小或者相等，例如：VII，初始化为5，第一轮循环I是比V小的，所以我们需要加上该数，也就是5+1 = 6，第二轮I = I，同样6+1 = 7；反之，当前符号代表的数字比它之前的一个符号代表的数字大，我们需要减去前一个数的两倍然后加上该数，例如：XIV，初始化为10，第一轮循环I<x，10+1 =="" 11，第二轮循环v="">I,11 - 1*2+5 = 14。所以不难看出这个方法还是很nice的，而且代码实现起来不会杂乱无章，如下。</x，10+1></p>
+<hr>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RomantoInteger</span> &#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        System.<span class="keyword">out</span>.println(romanToInteger(<span class="string">"DCXXI"</span>));</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">romanToInteger</span>(<span class="params">String s</span>)</span>&#123;</div><div class="line">        <span class="keyword">int</span> i, total, pre, cur;  </div><div class="line">        </div><div class="line">        total = charToInt(s.charAt(<span class="number">0</span>));  </div><div class="line">  </div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; s.length(); i++) &#123;  </div><div class="line">            pre = charToInt(s.charAt(i - <span class="number">1</span>));  </div><div class="line">            cur = charToInt(s.charAt(i));  </div><div class="line">  </div><div class="line">            <span class="keyword">if</span> (cur &lt;= pre) &#123;  </div><div class="line">                total += cur;  </div><div class="line">            &#125; <span class="keyword">else</span> &#123;  </div><div class="line">                total = total - pre * <span class="number">2</span> + cur;  </div><div class="line">            &#125;  </div><div class="line">        &#125; </div><div class="line">        <span class="keyword">return</span> total;  </div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">charToInt</span>(<span class="params"><span class="keyword">char</span> c</span>) </span>&#123;  </div><div class="line">        <span class="keyword">int</span> currentResult = <span class="number">0</span>;  </div><div class="line">        <span class="keyword">switch</span> (c) &#123;  </div><div class="line">            <span class="keyword">case</span> <span class="string">'I'</span>:  </div><div class="line">                currentResult = <span class="number">1</span>;  </div><div class="line">                <span class="keyword">break</span>;  </div><div class="line">            <span class="keyword">case</span> <span class="string">'V'</span>:  </div><div class="line">                currentResult = <span class="number">5</span>;  </div><div class="line">                <span class="keyword">break</span>;  </div><div class="line">            <span class="keyword">case</span> <span class="string">'X'</span>:  </div><div class="line">                currentResult = <span class="number">10</span>;  </div><div class="line">                <span class="keyword">break</span>;  </div><div class="line">            <span class="keyword">case</span> <span class="string">'L'</span>:  </div><div class="line">                currentResult = <span class="number">50</span>;  </div><div class="line">                <span class="keyword">break</span>;  </div><div class="line">            <span class="keyword">case</span> <span class="string">'C'</span>:  </div><div class="line">                currentResult = <span class="number">100</span>;  </div><div class="line">                <span class="keyword">break</span>;  </div><div class="line">            <span class="keyword">case</span> <span class="string">'D'</span>:  </div><div class="line">                currentResult = <span class="number">500</span>;  </div><div class="line">                <span class="keyword">break</span>;  </div><div class="line">            <span class="keyword">case</span> <span class="string">'M'</span>:  </div><div class="line">                currentResult = <span class="number">1000</span>;  </div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> currentResult;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>关爱空巢博主，请往这里投硬币，阿里嘎都~~~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wpay1.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LeetCode刷题</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://cliugeek9229.github.io/2018/03/06/LeetCode刷题：第13题Roman-to-Integer/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/03/03/LeetCode刷题：第9题PalindromeNumber/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode刷题：第9题PalindromeNumber</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="LeetCode刷题：第13题Roman-to-Integer" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "true"; 
+var conf = "true"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'Leno'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
 
           </div>
@@ -245,8 +409,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
