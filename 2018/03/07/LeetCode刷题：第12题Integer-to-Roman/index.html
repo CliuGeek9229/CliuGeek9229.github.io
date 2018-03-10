@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://cliugeek9229.github.io">
-  <title>Leno&#39;s Blog</title>
+  <title>LeetCode刷题：第12题Integer to Roman | Leno&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leno&#39;s Blog">
-<meta property="og:url" content="http://cliugeek9229.github.io/page/2/index.html">
+  <meta name="description" content="题目之前就完成了，今天补博客~">
+<meta name="keywords" content="LeetCode刷题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode刷题：第12题Integer to Roman">
+<meta property="og:url" content="http://cliugeek9229.github.io/2018/03/07/LeetCode刷题：第12题Integer-to-Roman/index.html">
 <meta property="og:site_name" content="Leno&#39;s Blog">
+<meta property="og:description" content="题目之前就完成了，今天补博客~">
+<meta property="og:updated_time" content="2018-03-10T13:00:15.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leno&#39;s Blog">
+<meta name="twitter:title" content="LeetCode刷题：第12题Integer to Roman">
+<meta name="twitter:description" content="题目之前就完成了，今天补博客~">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -169,22 +174,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-新的开始" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-LeetCode刷题：第12题Integer-to-Roman" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/31/新的开始/">新的开始</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode刷题：第12题Integer to Roman
     </h1>
   
 
         
-        <a href="/2017/08/31/新的开始/" class="archive-article-date">
-  	<time datetime="2017-08-31T13:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
+        <a href="/2018/03/07/LeetCode刷题：第12题Integer-to-Roman/" class="archive-article-date">
+  	<time datetime="2018-03-07T14:15:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
 </a>
         
       </header>
@@ -192,12 +195,73 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>今天是开学第二天，经过大学最后一个暑假的糙磨之后终于迎来了开学，虽然还是我的内蒙古大学，虽然还是计算机学院，但是我对新的开始还是充满了向往。<br>
-        
-          <a class="article-more-a" href="/2017/08/31/新的开始/#more">more >></a>
-        
+<p>题目之前就完成了，今天补博客~<br><a id="more"></a></p>
+</blockquote>
+<hr>
+<p><strong>题目要求：</strong>Given an integer, convert it to a roman numeral.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.</p>
+<hr>
+<h2 id="拼写规则：-罗马数字的拼写规则我有在上一篇博客中写到，请大家自行查阅。同样，我们给出罗马字符对应的阿拉伯数字表格。"><a href="#拼写规则：-罗马数字的拼写规则我有在上一篇博客中写到，请大家自行查阅。同样，我们给出罗马字符对应的阿拉伯数字表格。" class="headerlink" title="拼写规则： 罗马数字的拼写规则我有在上一篇博客中写到，请大家自行查阅。同样，我们给出罗马字符对应的阿拉伯数字表格。"></a><strong>拼写规则：</strong> 罗马数字的拼写规则我有在上一篇博客中写到，请大家自行查阅。同样，我们给出罗马字符对应的阿拉伯数字表格。</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">字母</th>
+<th style="text-align:center">M</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">L</th>
+<th style="text-align:center">X</th>
+<th style="text-align:center">V</th>
+<th style="text-align:center">I</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">代表数字</td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">500</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>设计思路：</strong>针对这个题，解法同样也有很多，这里我介绍的是我认为比较简单明了的解法。</p>
+<p>每两个level之间要用一个减法操作，为什么这么说呢，举个栗子：4，根据规则我们不能用IIII表示而是表示为IV，这个减法同样在9，40，90，400，900的时候使用，so这几种情况也不是很繁琐，我们列个数组把它们表示出来就好惹~</p>
+<p>同样遍历顺序从前往后，本着贪心的算法思想，每次从前往后选出最大的字符表示，然后把对应的罗马字符串联起来，也就能完成这道题了。代码如下：</p>
+<hr>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> leetcode;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * <span class="doctag">@ClassName</span> IntegerToRoman.java</div><div class="line"> * <span class="doctag">@author</span> Leno E-mail:cliugeek@us-forever.com</div><div class="line"> * <span class="doctag">@date</span> 2018年3月7日上午11:36:46</div><div class="line"> * <span class="doctag">@Description</span> Given an integer, convert it to a roman numeral.</div><div class="line"> * </div><div class="line"> *              Input is guaranteed to be within the range from 1 to 3999.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerToRoman</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        System.out.println(intToRoman(<span class="number">99</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        String result = <span class="string">""</span>;</div><div class="line">        String keys[] = &#123; <span class="string">"M"</span>, <span class="string">"CM"</span>, <span class="string">"D"</span>, <span class="string">"CD"</span>, <span class="string">"C"</span>, <span class="string">"XC"</span>, <span class="string">"L"</span>, <span class="string">"XL"</span>, <span class="string">"X"</span>, <span class="string">"IX"</span>, <span class="string">"V"</span>, <span class="string">"IV"</span>, <span class="string">"I"</span> &#125;;</div><div class="line">        <span class="keyword">int</span> values[] = &#123; <span class="number">1000</span>, <span class="number">900</span>, <span class="number">500</span>, <span class="number">400</span>, <span class="number">100</span>, <span class="number">90</span>, <span class="number">50</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">1</span> &#125;;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;num!=<span class="number">0</span>;i++)&#123;</div><div class="line">            <span class="keyword">while</span>(num&gt;=values[i])&#123;</div><div class="line">                num-=values[i];</div><div class="line">                result+=keys[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>关爱空巢博主，请往这里投硬币，阿里嘎都~~~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wpay1.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -208,7 +272,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LeetCode刷题</a>
         		</li>
       		
 		</ul>
@@ -217,264 +281,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/31/新的开始/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://cliugeek9229.github.io/2018/03/07/LeetCode刷题：第12题Integer-to-Roman/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-git-学习总结2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/21/git-学习总结2/">git 学习总结（二）</a>
-    </h1>
   
-
-        
-        <a href="/2017/06/21/git-学习总结2/" class="archive-article-date">
-  	<time datetime="2017-06-21T01:09:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>没错，这是接着上一次的博客写的。<br>
-        
-          <a class="article-more-a" href="/2017/06/21/git-学习总结2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/21/git-学习总结2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2018/03/06/LeetCode刷题：第13题Roman-to-Integer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode刷题：第13题Roman to Integer</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-git-学习总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/20/git-学习总结/">git 学习总结（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/20/git-学习总结/" class="archive-article-date">
-  	<time datetime="2017-06-20T14:27:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>最近把廖神的git教程重温一遍，这篇博客主要是针对git中的命令，稍作总结。<br>
-        
-          <a class="article-more-a" href="/2017/06/20/git-学习总结/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/20/git-学习总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-忙点好-忙点好" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/16/忙点好-忙点好/">忙点好~忙点好~</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/16/忙点好-忙点好/" class="archive-article-date">
-  	<time datetime="2017-06-16T11:58:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>这几天还真的是挺忙的，这样其实也挺充实的，最起码可以不让我老是窝宿舍。<br>
-        
-          <a class="article-more-a" href="/2017/06/16/忙点好-忙点好/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/16/忙点好-忙点好/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-博客处女作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/07/博客处女作/">博客处女作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/07/博客处女作/" class="archive-article-date">
-  	<time datetime="2017-06-07T13:37:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>欢迎大家来到我的博客！在旭哥哥不懈地指导下，我的博客总算是搭建起来了。在这个博客上面我会不定期地发布个人随笔、读书笔记等。<br>
-        
-          <a class="article-more-a" href="/2017/06/07/博客处女作/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/07/博客处女作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -482,9 +356,35 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+  <div id="SOHUCS" sid="LeetCode刷题：第12题Integer-to-Roman" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "true"; 
+var conf = "true"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'Leno'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
 
@@ -507,8 +407,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
